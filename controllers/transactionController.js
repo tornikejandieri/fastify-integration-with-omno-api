@@ -28,6 +28,7 @@ const createTransaction = async (req, res) => {
 
 const handleWebhook = async (req, res) => {
   const threeDsRedirectUrl = req.body["3dsRedirectUrl"]
+  console.log("WEBHOOK ====================>", req.body)
 
   if (threeDsRedirectUrl) {
     ;(async () => {

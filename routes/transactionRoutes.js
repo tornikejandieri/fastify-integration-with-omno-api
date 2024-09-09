@@ -5,9 +5,13 @@ const {
   paymentFail,
 } = require("../controllers/transactionController")
 const { authenticate } = require("../middlewares/auth")
+const { transactionSchema } = require("../validators/schema")
 
 module.exports = async (fastify, options) => {
   fastify.post("/create-transaction", {
+    schema: {
+      body: transactionSchema,
+    },
     preHandler: authenticate,
     handler: createTransaction,
   })
