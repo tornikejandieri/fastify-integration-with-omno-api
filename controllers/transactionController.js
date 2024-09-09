@@ -1,7 +1,6 @@
 const axios = require("axios")
 const process = require("process")
 const dotenv = require("dotenv").config()
-const requestBody = require("../helpers/data")
 
 const createTransaction = async (req, res) => {
   const accessToken = req.accessToken
