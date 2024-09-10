@@ -7,6 +7,7 @@ const createTransaction = async (req, res) => {
   const body = req.body
 
   if (accessToken !== null) {
+    res.status(202).send({ message: "Transaction is being initiated" })
     try {
       const resp = await axios.post(process.env.TRANSACTION_ENDPOINT, body, {
         headers: {
@@ -14,6 +15,7 @@ const createTransaction = async (req, res) => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
+      console.log("TRANSACTION SUCCESS =========>", resp.data)
     } catch (error) {
       console.log("ERROR:", error.message)
       if (error.response) {
@@ -23,6 +25,8 @@ const createTransaction = async (req, res) => {
         console.error("Error details:", error)
       }
     }
+  } else {
+    return res.status(400).send({ error: "token is missing" })
   }
 }
 
@@ -42,6 +46,9 @@ const handleWebhook = async (req, res) => {
         console.error("Error importing the module:", error)
       }
     })()
+  } else {
+    console.error("Redirect url is missing")
+    return res.status(400).send({ error: "Redirect url is missing" })
   }
 }
 
