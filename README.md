@@ -40,7 +40,12 @@ Or get Docker image 🐳
 
 > /create-transaction initiates transaction process (createTransaction function in transactionController.js), before that controller executes we have authenticate middleware (prehandler in Fastify terminology).
 
-IMPORTANT: Make sure to include json object in the request body. In the Postman go to body, then select raw, then paste same json object that we have in data.json file in project. Without that data server will reject your request.
+IMPORTANT: Make sure to include json object in the request body.
+In the Postman:
+
+1. Go to `body`
+2. Select `raw`
+3. Paste same json object that we have in data.json file in project. Without that data server will reject your request.
 
 > Webhook will be sent to the address your write in the hookUrl from json object, so dont forget to include same url provided by LocalTunnel into hookUrl, callback and callbackFail.
 
